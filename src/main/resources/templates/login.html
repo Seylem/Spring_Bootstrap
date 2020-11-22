@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+
+    <title>Login page</title>
 </head>
-<body>
+
+<body class="text-center">
+
+<div class="container">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <form class="form-signin" method="post" th:action="@{/login}">
+        <input th:type="mail" name="mail" class="form-control" placeholder="Email address" required autofocus/>
+        <input th:type="password" name="password" class="form-control" placeholder="Password" required/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+    </form>
+</div>
 
 </body>
 </html>

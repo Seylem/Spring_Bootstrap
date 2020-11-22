@@ -31,6 +31,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin()
+                // указываем страницу с формой логина
+                .loginPage("/login")
+                //указываем логику обработки при логине
+                .successHandler(new SuccessUserHandler())
+                // указываем action с формы логина
+                .loginProcessingUrl("/login")
+                // Указываем параметры логина и пароля с формы логина
+                .usernameParameter("mail")
+                .passwordParameter("password")
+                // даем доступ к форме логина всем
+                .permitAll();
+
         // http.csrf().disable(); - попробуйте выяснить сами, что это даёт
         http.authorizeRequests()
                 .antMatchers("/login").anonymous()// доступность всем
