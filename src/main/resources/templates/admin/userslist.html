@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+
+    <div>
+        <h2 align="center">Users</h2>
+        <table align="center">
+            <thead>
+            <tr>
+                <th><b>ID</b></th>
+                <th><b>Firstame</b></th>
+                <th><b>Lastname</b></th>
+                <th><b>Age</b></th>
+                <th><b>Email</b></th>
+                <th><b>Password</b></th>
+                <th><b>Roles</b></th>
+                <th><b>Edit</b></th>
+                <th><b>Delete</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${user}">
+                <td align="center" th:text="${user.id}"></td>
+                <td align="center" th:text="${user.firstname}"></td>
+                <td align="center" th:text="${user.lastname}"></td>
+                <td align="center" th:text="${user.age}"></td>
+                <td align="center" th:text="${user.mail}"></td>
+                <td align="center" th:text="${user.password}"></td>
+                <td align="center" th:text="${user.roles}"></td>
+                <td align="center"><a th:href="@{/admin/edituser/{id}(id=${user.id})}">Edit</a></td>
+                <td align="center"><a th:href="@{/admin/delete/{id}(id=${user.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <div align="center">
+        <form th:action="@{/admin/test}" method="get" align="center">
+            <input type="submit" value="TEST"/>
+        </form>
+        <form th:action="@{/admin/adduser}" method="get" align="center">
+            <input type="submit" value="Create User"/>
+        </form>
+        <form th:action="@{/logout}" method="post" align="center">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+</body>
+</html>
